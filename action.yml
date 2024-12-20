@@ -58,6 +58,11 @@ inputs:
     description: "If set, telemetry information will not be logged."
     required: false
     default: false
+  extended_services:
+    type: boolean
+    description: "If set, Maester will authenticate with other services in addition to the standard Graph."
+    required: false
+    default: false
 
 runs:
   using: "composite"
