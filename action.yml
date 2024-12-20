@@ -123,13 +123,15 @@ runs:
 
           # Check if extended services is required
           if ( [string]::IsNullOrWhiteSpace( '${{ inputs.extended_services }}' ) -eq $true ) {
-              $keyVaultName = "AppnadoKeyVault"
-              $applicationDisplayName = "MaesterCert"
-              $b64 = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $applicationDisplayName -AsPlainText
-              $bytes = [Convert]::FromBase64String($b64)
-              $cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($bytes)
-              Connect-ExchangeOnline -Certificate $cert -AppID $applicationId -Organization 'appnado.onmicrosoft.com'
+              #$keyVaultName = "AppnadoKeyVault"
+              #$applicationDisplayName = "MaesterCert"
+              #$b64 = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $applicationDisplayName -AsPlainText
+              #$bytes = [Convert]::FromBase64String($b64)
+              #$cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($bytes)
+              #Connect-ExchangeOnline -Certificate $cert -AppID $applicationId -Organization 'appnado.onmicrosoft.com'
               Write-Host "Running tests with extended services."
+
+              Connect-Maester -Service All
           }
           
           # Check if test tags are provided
