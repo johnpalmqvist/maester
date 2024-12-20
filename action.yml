@@ -128,7 +128,9 @@ runs:
 
               #Connect-Maester -Service All
           }
-
+              $azSecret = ConvertTo-SecureString secret.MAESTERAZACCOUNTSSECRET -AsPlainText -Force
+              $psCred = New-Object System.Management.Automation.PSCredential($applicationId, $azSecret)
+              Connect-AzAccount -TenantId $tenantId -Credential $psCred -ServicePrincipal
               $keyVaultName = "AppnadoKeyVault"
               $applicationDisplayName = "MaesterCert"
               $b64 = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $applicationDisplayName -AsPlainText
