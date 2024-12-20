@@ -91,7 +91,7 @@ runs:
         path: private-tests
 
     - name: Run Maester
-      uses: azure/powershell@v2
+      uses: azure/powershell@v3
       with:
         inlineScript: |
           # Get Token
